@@ -95,14 +95,16 @@ export const Home: React.FC<HomeProps> = ({ characterName, characterStatus, char
         {data.map((character) => {
           const bgColor = speciesColors[character.species] || 'bg-gray-400';
           return (
-            <div key={character.id} className="bg-gray-100 border rounded-lg p-4 relative">
+            <div key={character.id} className="bg-gray-100 border w-full rounded-lg p-4 relative">
+              <div className="flex items-center justify-center w-full ">
               <img
                 src={character.image}
                 alt={character.name}
                 className="w-60 h-auto mb-2 rounded-full"
               />
-              <h3 className="text-xl text-center font-bold">{character.name}</h3>
-              <div className="absolute top-48 left-0 p-2">
+              </div>
+              <h3 className="text-xl text-center font-bold py-6">{character.name}</h3>
+              <div className="absolute top-48 md:top-44 left-0 p-2">
                 <span className={`${bgColor} py-2 px-4 rounded-lg text-sm text-white`}>
                   {character.species}
                 </span>
