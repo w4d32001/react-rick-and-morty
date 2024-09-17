@@ -45,7 +45,7 @@ export const Layout = () => {
       <div className="p-8">
       <div className="bg-gray-100 py-4 px-8 rounded-lg flex items-center w-full relative mb-8">
         <input type="search" className="bg-gray-900 py-2 px-4 w-full rounded-lg
-        font-ubuntu placeholder:text-gray-300 text-primary text-xl" placeholder="Buscar..."
+        font-ubuntu placeholder:text-gray-300 text-primary text-xl" placeholder="Search..."
         value={name}
         onChange={onChange}
         />
