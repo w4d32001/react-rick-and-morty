@@ -1,7 +1,7 @@
 import { FaSearch } from "react-icons/fa"
-import { Link } from "react-router-dom"
-import { Home } from "../pages/Home"
+import { Character } from "../pages/Character"
 import { useState } from "react"
+import { Navbar } from "../components/Navbar"
 
 export const Layout = () => {
   const [name, setName] = useState("")
@@ -32,16 +32,7 @@ export const Layout = () => {
   };
   return ( 
     <div className="min-h-screen bg-gray-900 font-ubuntu">
-      <nav className="flex items-center justify-between px-4">
-      <div>
-        <img src="https://1000logos.net/wp-content/uploads/2022/03/Rick-and-Morty-500x281.png" alt="" className="w-auto h-28" />
-      </div>
-      <ul className="text-gray-100 flex items-center gap-4">
-        <li><Link to="" className="font-bold hover:text-primary transition-colors hover:cursor-pointer">Personajes</Link></li>
-        <li><Link to="" className="font-bold hover:text-primary transition-colors hover:cursor-pointer">Episodios</Link></li>
-        <li><Link to="" className="font-bold hover:text-primary transition-colors hover:cursor-pointer">Ubicaciones</Link></li>
-      </ul>
-      </nav>
+      <Navbar/>
       <div className="p-8">
       <div className="bg-gray-100 py-4 px-8 rounded-lg flex items-center w-full relative mb-8">
         <input type="search" className="bg-gray-900 py-2 px-4 w-full rounded-lg
@@ -74,7 +65,7 @@ export const Layout = () => {
           ))}
         </div>
       </div>
-      <Home characterName={name} characterSpecie={specie} characterStatus={status}/>
+      <Character characterName={name} characterSpecie={specie} characterStatus={status}/>
       </div>
     </div>
   )

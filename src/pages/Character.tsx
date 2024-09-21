@@ -1,19 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Character from "../interfaces/Character";
+import CharacterInterface from "../interfaces/Character";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-interface HomeProps {
+interface CharacterProps {
   characterName: string;  
   characterStatus: string;
   characterSpecie: string;
 }
 
-export const Home: React.FC<HomeProps> = ({ characterName, characterStatus, characterSpecie }) => {
+export const Character: React.FC<CharacterProps> = ({ characterName, characterStatus, characterSpecie }) => {
   const [paginate, setPaginate] = useState<number>(1);
   const [name, setName] = useState(characterName || "");
   const [status, setStatus] = useState(characterStatus || "");
   const [specie, setSpecie] = useState(characterSpecie || "");
-  const [data, setData] = useState<Character[]>([]);
+  const [data, setData] = useState<CharacterInterface[]>([]);
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -36,7 +37,7 @@ export const Home: React.FC<HomeProps> = ({ characterName, characterStatus, char
       
       try {
         const response = await axios.get(API_CHARACTER);
-        const newCharacters: Character[] = response.data.results;
+        const newCharacters: CharacterInterface[] = response.data.results;
 
         setData((prevData) => {
           const existingIds = new Set(prevData.map((char) => char.id));
@@ -95,16 +96,16 @@ export const Home: React.FC<HomeProps> = ({ characterName, characterStatus, char
         {data.map((character) => {
           const bgColor = speciesColors[character.species] || 'bg-gray-400';
           return (
-            <div key={character.id} className="bg-gray-100 border w-full rounded-lg p-4 relative">
-              <div className="flex items-center justify-center w-full ">
+            <div key={character.id} className="bg-gray-100 border w-full rounded-lg p-4 relative gap-y-4">
+              <div className="flex items-center justify-center w-full">
               <img
                 src={character.image}
                 alt={character.name}
                 className="w-60 h-auto mb-2 rounded-full"
               />
               </div>
-              <h3 className="text-xl text-center font-bold py-6">{character.name}</h3>
-              <div className="absolute top-48 md:top-44 left-0 p-2">
+              <h3 className="text-2xl text-primary text-center font-bold py-6 text-shadow-sm">{character.name}</h3>
+              <div className="absolute top-52 md:top-52 lg:top-40 xl:top-48 left-0 p-2">
                 <span className={`${bgColor} py-2 px-4 rounded-lg text-sm text-white`}>
                   {character.species}
                 </span>
@@ -118,7 +119,7 @@ export const Home: React.FC<HomeProps> = ({ characterName, characterStatus, char
           )
         })}
       </div>
-      {loading && <p className="text-center mt-4">Loading...</p>}
+      {loading && <p className="flex items-center justify-center"><AiOutlineLoading3Quarters className="animate-spin-fast text-7xl text-primary "/></p>}
     </div>
   );
 };

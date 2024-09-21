@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Layout } from "./layouts/Layout"
+import { Layout } from "./layouts/LayoutCharacter"
+import { LayoutEpisode } from "./layouts/LayoutEpisode"
 
 function App() {
   
@@ -7,9 +8,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout/>}>
-              
-          </Route>
+          <Route path="/" element={<Layout/>}></Route>
+          <Route path="/episode" element={<LayoutEpisode/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

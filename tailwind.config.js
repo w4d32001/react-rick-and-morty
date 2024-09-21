@@ -17,9 +17,20 @@ export default {
       fontFamily:{
         'ubuntu': ['Ubuntu', 'sans-serif'],
       },
+      textShadow: {
+        'sm': '1px 1px 2px rgba(0, 0, 0, 0.5)',
+        'md': '2px 2px 4px rgba(0, 0, 0, 0.7)',
+        'lg': '3px 3px 6px rgba(0, 0, 0, 0.9)',
+      },
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+        'spin-fast': 'spin 0.5s linear infinite',
+      },
     },
     
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-textshadow'),
+  ],
 }
 
